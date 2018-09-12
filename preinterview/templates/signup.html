@@ -1,0 +1,20 @@
+{% extends 'signupbase.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+      <div class="login-logo">
+        <b>Registration Form
+      </div><!-- /.login-logo -->
+      <div class="login-box-body">
+            <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <button type="submit">Sign up</button>
+  </form>
+
+      </div><!-- /.login-box-body -->
+{% endblock %}
+
