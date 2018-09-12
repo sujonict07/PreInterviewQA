@@ -7,5 +7,5 @@ app_name = 'preinterviewqaapp'
 
 urlpatterns = [
     path('signup/', SignUp.as_view(), name='signup'),
-    # path('create/', preinterview_question_answer_create_view, name='creates'),
+    path('create/', preinterview_question_answer_create_view, name='creates'),
 ]

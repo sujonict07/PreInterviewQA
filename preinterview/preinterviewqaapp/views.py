@@ -22,4 +22,4 @@ def preinterview_question_answer_create_view(request):
     context = {
         'form': form
     }
-    return render(request, "preinterviewqaapp/creates.html", context)
+    return render(request, "preinterviewqaapp/home.html", context)
