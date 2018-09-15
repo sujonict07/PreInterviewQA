@@ -1,6 +1,7 @@
 from django import forms
 
 from .models import PreInterviewModel
+from .models import JOB_CHOICES
 
 
 class PreInterviewModelForm(forms.ModelForm):
@@ -13,14 +14,14 @@ class PreInterviewModelForm(forms.ModelForm):
                             )
     email = forms.EmailField(help_text='A valid email address, please.')
 
-    jointime = forms.CharField(label="When you can start working in DDS?",
+    join_time = forms.CharField(label="When you can start working in DDS?",
                             widget=forms.TextInput(
                                 attrs={
                                     "placeholder": "Working Time"
                                 }
                             )
                             )
-    whyjoin = forms.CharField(required=False,
+    why_join = forms.CharField(required=False,
                     widget=forms.Textarea(
                         attrs={
                             "class": "new-class-name",
@@ -32,51 +33,20 @@ class PreInterviewModelForm(forms.ModelForm):
                     )
                 )
 
-    currentsalary = forms.DecimalField(initial=199.90)
-    salaryexpection = forms.DecimalField(initial=199.90)
-
+    current_salary = forms.DecimalField(initial=199.90)
+    salary_expection = forms.DecimalField(initial=199.90)
+    interested_job = forms.ChoiceField(choices=JOB_CHOICES, widget=forms.RadioSelect())
 
     class Meta:
         model = PreInterviewModel
         fields = [
             'name',
             'email',
-            'jointime',
-            'currentsalary',
-            'salaryexpection',
-            'whyjoin'
+            'join_time',
+            'current_salary',
+            'salary_expection',
+            'why_join',
+            'week_day',
+            'interview_time',
+            'interested_job',
         ]
-
-
-class RawPreInterviewModelForm(forms.Form):
-    name = forms.CharField(label="Input your name",
-                            widget=forms.TextInput(
-                                attrs={
-                                    "placeholder": "your Name"
-                                }
-                            )
-                            )
-    email = forms.EmailField(help_text='A valid email address, please.')
-
-    jointime = forms.CharField(label="When you can start working in DDS?",
-                            widget=forms.TextInput(
-                                attrs={
-                                    "placeholder": "Working Time"
-                                }
-                            )
-                            )
-    whyjoin = forms.CharField(required=False,
-                    widget=forms.Textarea(
-                        attrs={
-                            "class": "new-class-name",
-                            "placeholder": "your description",
-                            "id": "my-id-for-textarea",
-                            "row": 12,
-                            "cols": 12
-                        }
-                    )
-                )
-
-    currentsalary = forms.DecimalField(initial=199.90)
-    salaryexpection = forms.DecimalField(initial=199.90)
-
